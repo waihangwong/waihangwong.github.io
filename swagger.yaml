@@ -1,63 +1,1009 @@
-swagger: "2.0"
+swagger: '2.0'
 info:
-  description: "API to manage subscriptions at our own subscriptions provider, and Chargebee provider"
-  version: "0.0.1"
-  title: "Subscriptions Manager"
-tags:
-  - name: "admin"
-    description: "Admin API operations"
-  - name: "plans"
-    description: "API operations to control plans"
-  - name: "coupons"
-    description: "API operations to control coupons"
-  - name: "events"
-    description: "API operations for incoming Domain Event messages"
-  - name: "subscriptions"
-    description: "API bulk subscriptions operations"
-  - name: "subscription"
-    description: "API operations to control a specific subscription"
-  - name: "at home offer"
-    description: "API operations to control at home offers"
-  - name: "invoices"
-    description: "API operations to control invoices"
-  - name: "addons"
-    description: "API operations to control addons"
-
+  title: roostermoney
+  version: 1.0.0
+host: api.rooster.money
+schemes:
+  - https
+basePath: /api/v1/labs/ifttt/v1
 consumes:
   - application/json
 produces:
   - application/json
-
+paths:
+  /triggers/{trigger_slug}/trigger_identity/{trigger_identity}:
+    delete:
+      description: "Unsubscribe a user's trigger https://platform.ifttt.com/docs/api_reference#trigger-identity"
+      parameters:
+        - $ref: '#/parameters/accept'
+        - $ref: '#/parameters/accept_charset'
+        - $ref: '#/parameters/accept_encoding'
+        - $ref: '#/parameters/x_request_id'
+        - $ref: '#/parameters/trigger_slug_path_param'
+        - $ref: '#/parameters/trigger_identity_path_param'
+      responses:
+        '200':
+          description: "Success"
+      tags:
+        - Triggers
+  /triggers/boosted:
+    post:
+      parameters:
+        - $ref: '#/parameters/accept'
+        - $ref: '#/parameters/accept_charset'
+        - $ref: '#/parameters/accept_encoding'
+        - $ref: '#/parameters/x_request_id'
+        - $ref: '#/parameters/trigger_request_boosted'
+      responses:
+        '200':
+          $ref: '#/responses/trigger_response_boosted'
+        '400':
+          $ref: '#/responses/bad_request'
+        '401':
+          $ref: '#/responses/unauthorized'
+        '404':
+          $ref: '#/responses/not_found'
+        '429':
+          $ref: '#/responses/too_many_requests'
+        '500':
+          $ref: '#/responses/internal_server_error'
+        '503':
+          $ref: '#/responses/service_unavailable'
+      tags:
+        - Triggers
+  /triggers/boosted/fields/child/options:
+    post:
+      parameters:
+        - $ref: '#/parameters/accept'
+        - $ref: '#/parameters/accept_charset'
+        - $ref: '#/parameters/accept_encoding'
+        - $ref: '#/parameters/x_request_id'
+      responses:
+        '200':
+          $ref: '#/responses/populator_response'
+        '400':
+          $ref: '#/responses/bad_request'
+        '401':
+          $ref: '#/responses/unauthorized'
+        '404':
+          $ref: '#/responses/not_found'
+        '429':
+          $ref: '#/responses/too_many_requests'
+        '500':
+          $ref: '#/responses/internal_server_error'
+        '503':
+          $ref: '#/responses/service_unavailable'
+      tags:
+        - Triggers
+  /triggers/removed:
+    post:
+      parameters:
+        - $ref: '#/parameters/accept'
+        - $ref: '#/parameters/accept_charset'
+        - $ref: '#/parameters/accept_encoding'
+        - $ref: '#/parameters/x_request_id'
+        - $ref: '#/parameters/trigger_request_removed'
+      responses:
+        '200':
+          $ref: '#/responses/trigger_response_removed'
+        '400':
+          $ref: '#/responses/bad_request'
+        '401':
+          $ref: '#/responses/unauthorized'
+        '404':
+          $ref: '#/responses/not_found'
+        '429':
+          $ref: '#/responses/too_many_requests'
+        '500':
+          $ref: '#/responses/internal_server_error'
+        '503':
+          $ref: '#/responses/service_unavailable'
+      tags:
+        - Triggers
+  /triggers/removed/fields/child/options:
+    post:
+      parameters:
+        - $ref: '#/parameters/accept'
+        - $ref: '#/parameters/accept_charset'
+        - $ref: '#/parameters/accept_encoding'
+        - $ref: '#/parameters/x_request_id'
+      responses:
+        '200':
+          $ref: '#/responses/populator_response'
+        '400':
+          $ref: '#/responses/bad_request'
+        '401':
+          $ref: '#/responses/unauthorized'
+        '404':
+          $ref: '#/responses/not_found'
+        '429':
+          $ref: '#/responses/too_many_requests'
+        '500':
+          $ref: '#/responses/internal_server_error'
+        '503':
+          $ref: '#/responses/service_unavailable'
+      tags:
+        - Triggers
+  /triggers/ledgerTransfer:
+    post:
+      parameters:
+        - $ref: '#/parameters/accept'
+        - $ref: '#/parameters/accept_charset'
+        - $ref: '#/parameters/accept_encoding'
+        - $ref: '#/parameters/x_request_id'
+        - $ref: '#/parameters/trigger_request_ledgerTransfer'
+      responses:
+        '200':
+          $ref: '#/responses/trigger_response_ledgerTransfer'
+        '400':
+          $ref: '#/responses/bad_request'
+        '401':
+          $ref: '#/responses/unauthorized'
+        '404':
+          $ref: '#/responses/not_found'
+        '429':
+          $ref: '#/responses/too_many_requests'
+        '500':
+          $ref: '#/responses/internal_server_error'
+        '503':
+          $ref: '#/responses/service_unavailable'
+      tags:
+        - Triggers
+  /triggers/ledgerTransfer/fields/child/options:
+    post:
+      parameters:
+        - $ref: '#/parameters/accept'
+        - $ref: '#/parameters/accept_charset'
+        - $ref: '#/parameters/accept_encoding'
+        - $ref: '#/parameters/x_request_id'
+      responses:
+        '200':
+          $ref: '#/responses/populator_response'
+        '400':
+          $ref: '#/responses/bad_request'
+        '401':
+          $ref: '#/responses/unauthorized'
+        '404':
+          $ref: '#/responses/not_found'
+        '429':
+          $ref: '#/responses/too_many_requests'
+        '500':
+          $ref: '#/responses/internal_server_error'
+        '503':
+          $ref: '#/responses/service_unavailable'
+      tags:
+        - Triggers
+  /triggers/cardSpend:
+    post:
+      parameters:
+        - $ref: '#/parameters/accept'
+        - $ref: '#/parameters/accept_charset'
+        - $ref: '#/parameters/accept_encoding'
+        - $ref: '#/parameters/x_request_id'
+        - $ref: '#/parameters/trigger_request_cardSpend'
+      responses:
+        '200':
+          $ref: '#/responses/trigger_response_cardSpend'
+        '400':
+          $ref: '#/responses/bad_request'
+        '401':
+          $ref: '#/responses/unauthorized'
+        '404':
+          $ref: '#/responses/not_found'
+        '429':
+          $ref: '#/responses/too_many_requests'
+        '500':
+          $ref: '#/responses/internal_server_error'
+        '503':
+          $ref: '#/responses/service_unavailable'
+      tags:
+        - Triggers
+  /triggers/cardSpend/fields/child/options:
+    post:
+      parameters:
+        - $ref: '#/parameters/accept'
+        - $ref: '#/parameters/accept_charset'
+        - $ref: '#/parameters/accept_encoding'
+        - $ref: '#/parameters/x_request_id'
+      responses:
+        '200':
+          $ref: '#/responses/populator_response'
+        '400':
+          $ref: '#/responses/bad_request'
+        '401':
+          $ref: '#/responses/unauthorized'
+        '404':
+          $ref: '#/responses/not_found'
+        '429':
+          $ref: '#/responses/too_many_requests'
+        '500':
+          $ref: '#/responses/internal_server_error'
+        '503':
+          $ref: '#/responses/service_unavailable'
+      tags:
+        - Triggers
+  /actions/boost:
+    post:
+      parameters:
+        - $ref: '#/parameters/accept'
+        - $ref: '#/parameters/accept_charset'
+        - $ref: '#/parameters/accept_encoding'
+        - $ref: '#/parameters/x_request_id'
+        - $ref: '#/parameters/action_request_boost'
+      responses:
+        '200':
+          $ref: '#/responses/action_response'
+        '400':
+          $ref: '#/responses/action_bad_request'
+        '401':
+          $ref: '#/responses/unauthorized'
+        '404':
+          $ref: '#/responses/not_found'
+        '429':
+          $ref: '#/responses/too_many_requests'
+        '500':
+          $ref: '#/responses/internal_server_error'
+        '503':
+          $ref: '#/responses/service_unavailable'
+      tags:
+        - Actions
+  /actions/boost/fields/child/options:
+    post:
+      parameters:
+        - $ref: '#/parameters/accept'
+        - $ref: '#/parameters/accept_charset'
+        - $ref: '#/parameters/accept_encoding'
+        - $ref: '#/parameters/x_request_id'
+      responses:
+        '200':
+          $ref: '#/responses/populator_response'
+        '400':
+          $ref: '#/responses/bad_request'
+        '401':
+          $ref: '#/responses/unauthorized'
+        '404':
+          $ref: '#/responses/not_found'
+        '429':
+          $ref: '#/responses/too_many_requests'
+        '500':
+          $ref: '#/responses/internal_server_error'
+        '503':
+          $ref: '#/responses/service_unavailable'
+      tags:
+        - Actions
+  /actions/remove:
+    post:
+      parameters:
+        - $ref: '#/parameters/accept'
+        - $ref: '#/parameters/accept_charset'
+        - $ref: '#/parameters/accept_encoding'
+        - $ref: '#/parameters/x_request_id'
+        - $ref: '#/parameters/action_request_remove'
+      responses:
+        '200':
+          $ref: '#/responses/action_response'
+        '400':
+          $ref: '#/responses/action_bad_request'
+        '401':
+          $ref: '#/responses/unauthorized'
+        '404':
+          $ref: '#/responses/not_found'
+        '429':
+          $ref: '#/responses/too_many_requests'
+        '500':
+          $ref: '#/responses/internal_server_error'
+        '503':
+          $ref: '#/responses/service_unavailable'
+      tags:
+        - Actions
+  /actions/remove/fields/child/options:
+    post:
+      parameters:
+        - $ref: '#/parameters/accept'
+        - $ref: '#/parameters/accept_charset'
+        - $ref: '#/parameters/accept_encoding'
+        - $ref: '#/parameters/x_request_id'
+      responses:
+        '200':
+          $ref: '#/responses/populator_response'
+        '400':
+          $ref: '#/responses/bad_request'
+        '401':
+          $ref: '#/responses/unauthorized'
+        '404':
+          $ref: '#/responses/not_found'
+        '429':
+          $ref: '#/responses/too_many_requests'
+        '500':
+          $ref: '#/responses/internal_server_error'
+        '503':
+          $ref: '#/responses/service_unavailable'
+      tags:
+        - Actions
+  /actions/transfer:
+    post:
+      parameters:
+        - $ref: '#/parameters/accept'
+        - $ref: '#/parameters/accept_charset'
+        - $ref: '#/parameters/accept_encoding'
+        - $ref: '#/parameters/x_request_id'
+        - $ref: '#/parameters/action_request_transfer'
+      responses:
+        '200':
+          $ref: '#/responses/action_response'
+        '400':
+          $ref: '#/responses/action_bad_request'
+        '401':
+          $ref: '#/responses/unauthorized'
+        '404':
+          $ref: '#/responses/not_found'
+        '429':
+          $ref: '#/responses/too_many_requests'
+        '500':
+          $ref: '#/responses/internal_server_error'
+        '503':
+          $ref: '#/responses/service_unavailable'
+      tags:
+        - Actions
+  /actions/transfer/fields/child/options:
+    post:
+      parameters:
+        - $ref: '#/parameters/accept'
+        - $ref: '#/parameters/accept_charset'
+        - $ref: '#/parameters/accept_encoding'
+        - $ref: '#/parameters/x_request_id'
+      responses:
+        '200':
+          $ref: '#/responses/populator_response'
+        '400':
+          $ref: '#/responses/bad_request'
+        '401':
+          $ref: '#/responses/unauthorized'
+        '404':
+          $ref: '#/responses/not_found'
+        '429':
+          $ref: '#/responses/too_many_requests'
+        '500':
+          $ref: '#/responses/internal_server_error'
+        '503':
+          $ref: '#/responses/service_unavailable'
+      tags:
+        - Actions
+  /status:
+    get:
+      security:
+        - ifttt_service_key: []
+      parameters:
+        - $ref: '#/parameters/accept'
+        - $ref: '#/parameters/accept_charset'
+        - $ref: '#/parameters/accept_encoding'
+        - $ref: '#/parameters/x_request_id'
+      responses:
+        '200':
+          description: OK
+        '503':
+          $ref: '#/responses/service_unavailable'
+      tags:
+        - Service
+  /user/info:
+    get:
+      parameters:
+        - $ref: '#/parameters/accept'
+        - $ref: '#/parameters/accept_charset'
+        - $ref: '#/parameters/accept_encoding'
+        - $ref: '#/parameters/x_request_id'
+      responses:
+        '200':
+          $ref: '#/responses/user_response'
+        '400':
+          $ref: '#/responses/bad_request'
+        '401':
+          $ref: '#/responses/unauthorized'
+        '404':
+          $ref: '#/responses/not_found'
+        '429':
+          $ref: '#/responses/too_many_requests'
+        '500':
+          $ref: '#/responses/internal_server_error'
+        '503':
+          $ref: '#/responses/service_unavailable'
+      tags:
+        - Service
+  /test/setup:
+    get:
+      security:
+        - ifttt_service_key: []
+      parameters:
+        - $ref: '#/parameters/accept'
+        - $ref: '#/parameters/accept_charset'
+        - $ref: '#/parameters/accept_encoding'
+        - $ref: '#/parameters/x_request_id'
+        - $ref: '#/parameters/ifttt_test_mode'
+      responses:
+        '200':
+          $ref: '#/responses/test_setup_response'
+        '400':
+          $ref: '#/responses/bad_request'
+        '401':
+          $ref: '#/responses/unauthorized'
+        '404':
+          $ref: '#/responses/not_found'
+        '429':
+          $ref: '#/responses/too_many_requests'
+        '500':
+          $ref: '#/responses/internal_server_error'
+        '503':
+          $ref: '#/responses/service_unavailable'
+      tags:
+        - Service
 parameters:
-  familyIdPathParam:
-    name: familyId
+  trigger_slug_path_param:
+    name: trigger_slug
     in: path
-    description: "Rooster family account identifier"
     required: true
-    type: integer
-    format: int32
-
+    description: "Trigger slug, e.g. boosted"
+    type: string
+  trigger_identity_path_param:
+    name: trigger_identity
+    in: path
+    description: "Trigger identifier for a user"
+    required: true
+    type: string
+  trigger_request_boosted:
+    in: body
+    name: body
+    required: true
+    description: Trigger request for boosted.
+    schema:
+      allOf:
+        - type: object
+          required:
+            - triggerFields
+          properties:
+            triggerFields:
+              type: object
+              properties:
+                child:
+                  $ref: '#/definitions/string_field'
+                pot:
+                  $ref: '#/definitions/string_field'
+        - $ref: '#/definitions/base_trigger_request'
+  trigger_request_removed:
+    in: body
+    name: body
+    required: true
+    description: Trigger request for removed.
+    schema:
+      allOf:
+        - type: object
+          required:
+            - triggerFields
+          properties:
+            triggerFields:
+              type: object
+              properties:
+                child:
+                  $ref: '#/definitions/string_field'
+                pot:
+                  $ref: '#/definitions/string_field'
+        - $ref: '#/definitions/base_trigger_request'
+  trigger_request_ledgerTransfer:
+    in: body
+    name: body
+    required: true
+    description: Trigger request for ledgerTransfer.
+    schema:
+      allOf:
+        - type: object
+          required:
+            - triggerFields
+          properties:
+            triggerFields:
+              type: object
+              properties:
+                child:
+                  $ref: '#/definitions/string_field'
+                source_pot:
+                  $ref: '#/definitions/string_field'
+                destination_pot:
+                  $ref: '#/definitions/string_field'
+        - $ref: '#/definitions/base_trigger_request'
+  trigger_request_cardSpend:
+    in: body
+    name: body
+    required: true
+    description: Trigger request for cardSpend.
+    schema:
+      allOf:
+        - type: object
+          required:
+            - triggerFields
+          properties:
+            triggerFields:
+              type: object
+              properties:
+                child:
+                  $ref: '#/definitions/string_field'
+        - $ref: '#/definitions/base_trigger_request'
+  action_request_boost:
+    in: body
+    name: body
+    required: true
+    description: Action request for boost.
+    schema:
+      allOf:
+        - type: object
+          required:
+            - actionFields
+          properties:
+            actionFields:
+              type: object
+              properties:
+                amount:
+                  description: Amount
+                  type: string
+                child:
+                  description: Child
+                  type: string
+                pot:
+                  description: Pot
+                  type: string
+                description:
+                  description: Description
+                  type: string
+        - $ref: '#/definitions/base_action_request'
+  action_request_remove:
+    in: body
+    name: body
+    required: true
+    description: Action request for remove.
+    schema:
+      allOf:
+        - type: object
+          required:
+            - actionFields
+          properties:
+            actionFields:
+              type: object
+              properties:
+                amount:
+                  description: Amount
+                  type: string
+                child:
+                  description: Child
+                  type: string
+                pot:
+                  description: Pot
+                  type: string
+                description:
+                  description: Description
+                  type: string
+        - $ref: '#/definitions/base_action_request'
+  action_request_transfer:
+    in: body
+    name: body
+    required: true
+    description: Action request for transfer.
+    schema:
+      allOf:
+        - type: object
+          required:
+            - actionFields
+          properties:
+            actionFields:
+              type: object
+              properties:
+                amount:
+                  description: Amount
+                  type: string
+                child:
+                  description: Child
+                  type: string
+                source_pot:
+                  description: Source Pot
+                  type: string
+                destination_pot:
+                  description: Destination Pot
+                  type: string
+                note:
+                  description: Note
+                  type: string
+        - $ref: '#/definitions/base_action_request'
+  accept:
+    in: header
+    name: Accept
+    type: string
+    enum:
+      - application/json
+  accept_charset:
+    in: header
+    name: Accept-Charset
+    type: string
+    enum:
+      - utf-8
+  accept_encoding:
+    in: header
+    name: Accept-Encoding
+    type: array
+    collectionFormat: csv
+    items:
+      type: string
+      enum:
+        - gzip
+        - deflate
+  x_request_id:
+    in: header
+    name: X-Request-ID
+    type: string
+  ifttt_test_mode:
+    in: header
+    name: IFTTT-Test-Mode
+    type: number
+responses:
+  trigger_response_boosted:
+    description: Trigger response for boosted.
+    schema:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            required:
+              - meta
+            properties:
+              created_at:
+                $ref: '#/definitions/datetime_field'
+              amount:
+                $ref: '#/definitions/string_field'
+              meta:
+                $ref: '#/definitions/meta'
+  trigger_response_removed:
+    description: Trigger response for removed.
+    schema:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            required:
+              - meta
+            properties:
+              created_at:
+                $ref: '#/definitions/datetime_field'
+              amount:
+                $ref: '#/definitions/string_field'
+              meta:
+                $ref: '#/definitions/meta'
+  trigger_response_ledgerTransfer:
+    description: Trigger response for ledgerTransfer.
+    schema:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            required:
+              - meta
+            properties:
+              created_at:
+                $ref: '#/definitions/datetime_field'
+              amount:
+                $ref: '#/definitions/string_field'
+              meta:
+                $ref: '#/definitions/meta'
+  trigger_response_cardSpend:
+    description: Trigger response for cardSpend.
+    schema:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            required:
+              - meta
+            properties:
+              created_at:
+                $ref: '#/definitions/datetime_field'
+              spend_amount:
+                $ref: '#/definitions/string_field'
+              spend_amount_decimal:
+                $ref: '#/definitions/string_field'
+              merchant:
+                $ref: '#/definitions/string_field'
+              available_balance:
+                $ref: '#/definitions/string_field'
+              available_balance_decimal:
+                $ref: '#/definitions/string_field'
+              meta:
+                $ref: '#/definitions/meta'
+  validator_response:
+    description: The field was validated.
+    schema:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          $ref: '#/definitions/dynamic_validation'
+  populator_response:
+    description: Options for the field.
+    schema:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            description: 'Swagger 2.0 does not support oneOf. Please use (label, value) or (label, values).'
+            required:
+              - label
+            properties:
+              label:
+                type: string
+              value:
+                type: string
+              values:
+                type: array
+                minimum: 1
+                items:
+                  $ref: '#/definitions/option'
+  action_response:
+    description: The action response.
+    schema:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          type: array
+          minimum: 1
+          items:
+            type: object
+            required:
+              - id
+            properties:
+              id:
+                type: string
+              url:
+                type: string
+  bad_request:
+    description: There was something wrong with incoming data from IFTTT. Provide an error response body to clarify what went wrong.
+    schema:
+      $ref: '#/definitions/errors'
+  action_bad_request:
+    description: There was something wrong with incoming data from IFTTT. Provide an error response body to clarify what went wrong.
+    schema:
+      $ref: '#/definitions/action_errors'
+  unauthorized:
+    description: IFTTT sent an OAuth2 access token that isn’t valid.
+    schema:
+      $ref: '#/definitions/errors'
+  not_found:
+    description: IFTTT is trying to reach a URL that doesn’t exist.
+    schema:
+      $ref: '#/definitions/errors'
+  too_many_requests:
+    description: IFTTT has sent too many requests in a given amount of time.
+    schema:
+      $ref: '#/definitions/errors'
+  internal_server_error:
+    description: There was an error in your application logic.
+    schema:
+      $ref: '#/definitions/errors'
+  service_unavailable:
+    description: 'Your service is not available at the moment, but IFTTT should try again later.'
+    schema:
+      $ref: '#/definitions/errors'
+  user_response:
+    description: The user information.
+    schema:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          type: object
+          required:
+            - id
+            - name
+          properties:
+            id:
+              type: string
+              description: 'Username, email, number, or other identification to uniquely identify the resource owner.'
+            name:
+              type: string
+              description: 'Full name, username, email, or other identification to display to the user.'
+            url:
+              type: string
+              description: URL to user’s dashboard or configuration page on your service’s website.
+  test_setup_response:
+    description: Test setup response which returns an access token which IFTTT portal can use to test the other endpoints.
+    schema:
+      type: object
+      required:
+        - data
+      properties:
+        data:
+          type: object
+          required:
+            - accessToken
+          properties:
+            accessToken:
+              type: string
+              description: 'An access token which can be used to test the other endpoints'
 definitions:
-PlanResponse:
+  base_trigger_request:
+    type: object
+    required:
+      - trigger_identity
+    properties:
+      trigger_identity:
+        description: A unique identifier for this set of trigger fields for a given Applet.
+        type: string
+      limit:
+        description: 'Maximum number of items to be returned, default 50.'
+        type: integer
+        format: int32
+        default: 50
+        minimum: 0
+      user:
+        $ref: '#/definitions/user'
+      ifttt_source:
+        $ref: '#/definitions/ifttt_source'
+  base_action_request:
     type: object
     properties:
-      key:
+      user:
+        $ref: '#/definitions/user'
+      ifttt_source:
+        $ref: '#/definitions/ifttt_source'
+  user:
+    description: Information about the IFTTT user related to this request.
+    type: object
+    properties:
+      id:
+        type: integer
+      timezone:
         type: string
-
-paths:
-
-  /plans:
-    get:
-      tags:
-        - "plans"
-      summary: "Lists all available subscription plans"
-      description: "Lists all available subscription plans"
-      parameters:
-        - $ref: '#/parameters/familyIdPathParam'
-      responses:
-        200:
-          description: "Returns list of plans."
-          schema:
-            type: array
-            items:
-              $ref: "#/definitions/PlanResponse"
+  ifttt_source:
+    description: Information about the personal Applet on IFTTT that triggered this request.
+    type: object
+    properties:
+      id:
+        type: string
+      url:
+        type: string
+  meta:
+    description: Trigger Meta data.
+    type: object
+    required:
+      - id
+      - timestamp
+    properties:
+      id:
+        description: A unique identifier for the item.
+        type: string
+      timestamp:
+        description: A Unix timestamp in seconds.
+        type: integer
+  option:
+    description: Dynamic option
+    type: object
+    required:
+      - label
+      - value
+    properties:
+      label:
+        description: A user-facing label.
+        type: string
+      value:
+        description: The actual field value.
+        type: string
+  dynamic_validation:
+    description: Field Dynamic validation.
+    type: object
+    required:
+      - valid
+    properties:
+      valid:
+        type: boolean
+      message:
+        type: string
+        description: A user-facing message for an invalid field.
+  string_field:
+    description: String Field
+    type: string
+  datetime_field:
+    description: Datetime Field
+    type: string
+    format: date-time
+  date_field:
+    description: Datetime Field
+    type: string
+    format: date
+  location_field:
+    description: Location Field
+    type: object
+    required:
+      - lat
+      - lng
+    properties:
+      lat:
+        type: number
+        format: double
+      lng:
+        type: number
+        format: double
+      radius:
+        type: number
+        format: double
+  errors:
+    description: Errors
+    type: object
+    required:
+      - errors
+    properties:
+      errors:
+        type: array
+        minItems: 1
+        items:
+          type: object
+          required:
+            - message
+          properties:
+            message:
+              type: string
+  action_errors:
+    description: Action Errors
+    type: object
+    required:
+      - errors
+    properties:
+      errors:
+        type: array
+        minItems: 1
+        items:
+          type: object
+          required:
+            - message
+          properties:
+            status:
+              type: string
+              description: Skip the action from retrying.
+              enum:
+                - SKIP
+            message:
+              type: string
+securityDefinitions:
+  ifttt_service_key:
+    type: apiKey
+    name: IFTTT-Service-Key
+    in: header
+  bearer:
+    type: apiKey
+    description: Bearer token.
+    name: Authorization
+    in: header
+security:
+  - bearer: []
+tags:
+  - name: Triggers
+    description: IFTTT Trigger Endpoints
+  - name: Actions
+    description: IFTTT Action Endpoints
+  - name: Service
+    description: IFTTT Service Endpoints
