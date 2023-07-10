@@ -10,9 +10,19 @@ on:
   #  branches:
   #    - feature/SILO-15623_githubaction_rollback
 
-obs:
+jobs:
   fetch-and-deploy: 
       runs-on: ubuntu-latest
       steps:
+        - name: Export build number
+          run:
         # Create step with github script that finds the latest non-draft release
-        - echo $ {{ github.event.release }}
+            echo "${{ github.event.release }}" > r
+        - name: Export build number
+          run:
+        # Create step with github script that finds the latest non-draft release
+            echo ${{ github.event.release }}
+        - name: Export build number
+          run:
+        # Create step with github script that finds the latest non-draft release
+            cat r
