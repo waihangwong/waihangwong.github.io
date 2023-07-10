@@ -31,4 +31,4 @@ jobs:
           echo test, and deploy your project.
           echo $GITHUB_CONTEXT
           echo "$GITHUB_CONTEXT"
-          echo ${{github.event}}
+          echo ${{toJSON(github.event)}}
