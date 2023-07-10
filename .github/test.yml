@@ -1,0 +1,18 @@
+name: test
+
+on: 
+  release:
+    types: [edited]
+  # Workflow will not be triggered for draft release
+  # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#release
+  # for testing
+  # push:
+  #  branches:
+  #    - feature/SILO-15623_githubaction_rollback
+
+obs:
+  fetch-and-deploy: 
+      runs-on: ubuntu-latest
+      steps:
+        # Create step with github script that finds the latest non-draft release
+        - echo $ {{ github.event.release }}
