@@ -15,12 +15,6 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - name: Export build number
-          env:
-            XYZ: ${{ github.event.release }}
-          run:
-        # Create step with github script that finds the latest non-draft release
-            echo "$XYZ"
-        - name: Export build number
           run:
         # Create step with github script that finds the latest non-draft release
             echo "$GITHUB_CONTEXT"
