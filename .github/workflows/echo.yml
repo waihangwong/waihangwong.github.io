@@ -31,4 +31,7 @@ jobs:
           echo test, and deploy your project.
           echo $GITHUB_CONTEXT
           echo "$GITHUB_CONTEXT"
-          echo ${{toJSON(github.event)}}
+      - name: x
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
