@@ -15,6 +15,6 @@ jobs:
       runs-on: ubuntu-latest
       steps:
         - name: Export build number
-          run:
-        # Create step with github script that finds the latest non-draft release
-            echo "$GITHUB_CONTEXT"
+          env:
+            GITHUB_CONTEXT: ${{ toJson(github) }}
+          run: echo "$GITHUB_CONTEXT"
